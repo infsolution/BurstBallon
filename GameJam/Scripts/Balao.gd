@@ -1,12 +1,16 @@
 extends RigidBody2D
 onready var time = get_node("../Timer")
+onready var balao = get_node("../../Baloes")
+var cena
 func _ready():
+	cena = get_tree().get_current_scene()
 	set_process(true)
 	
 func _process(delta):
 	if self.position.y <= 0:
-		#print("destruido")
+		cena.deading(get_owner())
 		queue_free()
+	
 
 
 func _on_Balao_body_entered(body):
