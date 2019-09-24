@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Pedra.gd" type="Script" id=1]
+[ext_resource path="res://asset/image/pedra.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/BodyPedra.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 8.69584
+
+[node name="Pedra" type="Node2D"]
+position = Vector2( 89.4108, 400.407 )
+z_index = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="PedraSprite" type="Sprite" parent="."]
+position = Vector2( -7.94434, -7.10938 )
+scale = Vector2( 0.0334763, 0.0313381 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="BodyPedra" type="StaticBody2D" parent="."]
+position = Vector2( 0.418137, 0 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPedra"]
+position = Vector2( -0.83622, 0.836212 )
+shape = SubResource( 1 )
