@@ -1,2 +1,2 @@
 # BurstBallon
-Game em goodot para GameJan
+Game em godot para GameJan
