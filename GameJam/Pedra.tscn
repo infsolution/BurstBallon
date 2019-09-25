@@ -11,9 +11,6 @@ radius = 8.69584
 position = Vector2( 89.4108, 400.407 )
 z_index = 2
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="PedraSprite" type="Sprite" parent="."]
 position = Vector2( -7.94434, -7.10938 )
@@ -22,6 +19,7 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="BodyPedra" type="StaticBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 0.418137, 0 )
 script = ExtResource( 3 )
 

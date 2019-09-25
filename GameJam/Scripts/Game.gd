@@ -8,6 +8,7 @@ onready var gerador = get_node("GeraBaloes/Gerador")
 onready var fumaca = get_node("Fumaca")
 onready var lab_parabens = get_node("Ganhou/LabelParabens")
 onready var but_reset = get_node("Ganhou/ButtonRestart")
+onready var pedra = get_node("Capanga/Pedra")
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

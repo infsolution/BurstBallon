@@ -2,6 +2,7 @@ extends StaticBody2D
 
 export var vel = 1300
 onready var pedra = get_node("../../Pedra")
+onready var borracha = get_node("../../Borracha")
 var dragMouse = false
 var tiro = false
 var ang = 0
@@ -29,6 +30,8 @@ func _process(delta):
 			if pedra.position.x >= 137.0 and pedra.position.x <= 300.0 and pedra.position.y >= 347.0 and pedra.position.x <= 547.0:
 				pedra.position = get_viewport().get_mouse_position()
 				#print(pedra.position)
+				#borracha.play("esticada")
+				
 	if tiro:
 		disparar(300-pedra.position.x, pedra.position.y, delta)
 	#

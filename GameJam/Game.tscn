@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://asset/image/céu-mount.png" type="Texture" id=2]
@@ -16,6 +16,9 @@
 [ext_resource path="res://asset/image/fumaca.png" type="Texture" id=14]
 [ext_resource path="res://asset/fonts/red-delicious/reddeliciousboldital.otf" type="DynamicFontData" id=15]
 [ext_resource path="res://asset/fonts/red-delicious/reddelicious3d.otf" type="DynamicFontData" id=16]
+[ext_resource path="res://asset/image/borracha-corada.png" type="Texture" id=17]
+[ext_resource path="res://asset/image/boracha-atirada.png" type="Texture" id=18]
+[ext_resource path="res://asset/image/borracha-estica.png" type="Texture" id=19]
 
 [sub_resource type="DynamicFont" id=1]
 size = 90
@@ -32,6 +35,24 @@ font_data = ExtResource( 15 )
 [sub_resource type="DynamicFont" id=4]
 size = 40
 font_data = ExtResource( 16 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": true,
+"name": "disparou",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "esticada",
+"speed": 5.0
+} ]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -91,7 +112,7 @@ z_index = 2
 
 [node name="Pedra" parent="Capanga" instance=ExtResource( 9 )]
 position = Vector2( 293.919, 433.853 )
-z_index = 0
+z_index = 3
 
 [node name="Pedreira" type="Position2D" parent="Capanga"]
 script = ExtResource( 10 )
@@ -155,6 +176,14 @@ custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.0392157, 0.952941, 0.203922, 1 )
 custom_colors/font_color_hover = Color( 0.388235, 0.0196078, 0.0196078, 1 )
 text = "Voltar"
+
+[node name="Borracha" type="AnimatedSprite" parent="."]
+position = Vector2( 174.204, 257.242 )
+rotation = 0.24674
+scale = Vector2( 0.455629, 0.449463 )
+z_index = 2
+frames = SubResource( 5 )
+centered = false
 [connection signal="timeout" from="GeraBaloes/Timer" to="GeraBaloes/Gerador" method="_on_Timer_timeout"]
 [connection signal="pressed" from="GameOver/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Ganhou/ButtonRestart" to="." method="_on_ButtonRestart_pressed"]
