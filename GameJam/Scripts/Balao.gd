@@ -16,6 +16,7 @@ func _process(delta):
 func _on_Balao_body_entered(body):
 	if body.name == "BodyPedra":
 		$Balao_animi.play("estouro")
+		cena.pontuar(get_owner())
 		delay()
 		
 func delay():

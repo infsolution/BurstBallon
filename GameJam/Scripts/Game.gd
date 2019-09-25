@@ -1,9 +1,13 @@
 extends Node2D
 var life = 20
-var score = 0
+var sobe = true
+var ganhou = false
 onready var label = get_node("GameOver/Label")
 onready var but = get_node("GameOver/Button")
 onready var gerador = get_node("GeraBaloes/Gerador")
+onready var fumaca = get_node("Fumaca")
+onready var lab_parabens = get_node("Ganhou/LabelParabens")
+onready var but_reset = get_node("Ganhou/ButtonRestart")
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -18,7 +22,11 @@ func _process(delta):
 		gerador.stop = true
 		label.show()
 		but.show()
-
+	if ganhou:
+		gerador.stop = true
+		lab_parabens.show()
+		but_reset.show()
+	
 
 func _on_Button_pressed():
 	get_tree().change_scene("res://Menu.tscn")
@@ -26,6 +34,16 @@ func _on_Button_pressed():
 func deading(balao):
 	if balao.destruivel:
 		life -=1
+		fumaca.sobe()
 func pontuar(balao):
 	if balao.destruivel:
 		life +=1
+		fumaca.desce()
+	else:
+		life -=1
+		fumaca.sobe()
+func pontos():
+	return life
+
+func _on_ButtonRestart_pressed():
+	get_tree().change_scene("res://Menu.tscn")

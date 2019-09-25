@@ -29,5 +29,4 @@ func _on_Timer_timeout():
 			delay -= 1
 		if white.modulate == novo_balao.modulate:
 			novo_balao.destruivel = true
-		print(novo_balao.destruivel)
 		get_owner().add_child(novo_balao)

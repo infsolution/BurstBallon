@@ -17,6 +17,5 @@ func _input(event):
 		if event.is_action_pressed("pegar_pedra"):
 			var new_pedra = pedra.instance()
 			new_pedra.position = self.position + Vector2(293,430)
-			print(new_pedra.position)
 			get_owner().add_child(new_pedra)
 			

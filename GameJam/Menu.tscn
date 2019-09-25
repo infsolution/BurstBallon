@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://asset/fonts/osaka/Osaka Mustache - Personal Use.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://asset/fonts/red-delicious/reddelicioustitleital.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://asset/image/céu-png.png" type="Texture" id=4]
+[ext_resource path="res://asset/image/Balloons.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -59,5 +60,11 @@ position = Vector2( 205.707, 103.405 )
 scale = Vector2( 1.3156, 1.24354 )
 z_index = -1
 texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="CenterContainer/VBoxContainer"]
+position = Vector2( 325.932, 88.0896 )
+scale = Vector2( 0.376847, 0.337696 )
+texture = ExtResource( 5 )
+centered = false
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button2" to="." method="_on_Button2_pressed"]

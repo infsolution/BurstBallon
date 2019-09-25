@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://asset/image/céu-mount.png" type="Texture" id=2]
@@ -12,6 +12,10 @@
 [ext_resource path="res://Scripts/Pedreira.gd" type="Script" id=10]
 [ext_resource path="res://asset/fonts/red-delicious/reddeliciousexpandital.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://asset/fonts/red-delicious/reddeliciousleft.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://Scripts/Fumaca.gd" type="Script" id=13]
+[ext_resource path="res://asset/image/fumaca.png" type="Texture" id=14]
+[ext_resource path="res://asset/fonts/red-delicious/reddeliciousboldital.otf" type="DynamicFontData" id=15]
+[ext_resource path="res://asset/fonts/red-delicious/reddelicious3d.otf" type="DynamicFontData" id=16]
 
 [sub_resource type="DynamicFont" id=1]
 size = 90
@@ -20,6 +24,14 @@ font_data = ExtResource( 11 )
 [sub_resource type="DynamicFont" id=2]
 size = 70
 font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+font_data = ExtResource( 15 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+font_data = ExtResource( 16 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -107,5 +119,42 @@ margin_bottom = 469.84
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.0352941, 0.94902, 0.0470588, 1 )
 text = "VOLTAR"
+
+[node name="Fumaca" type="Node2D" parent="."]
+editor/display_folded = true
+position = Vector2( 14.6816, 387.595 )
+z_index = 3
+script = ExtResource( 13 )
+
+[node name="Sprite" type="Sprite" parent="Fumaca"]
+position = Vector2( -26.4269, 38.1722 )
+scale = Vector2( 5.28703, 7.1764 )
+texture = ExtResource( 14 )
+centered = false
+
+[node name="Ganhou" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="LabelParabens" type="Label" parent="Ganhou"]
+visible = false
+margin_left = 234.6
+margin_top = 143.05
+margin_right = 835.6
+margin_bottom = 186.05
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.921569, 0.0431373, 0.972549, 1 )
+text = "Parabéns Você Salvou o mundo!"
+
+[node name="ButtonRestart" type="Button" parent="Ganhou"]
+visible = false
+margin_left = 461.589
+margin_top = 205.682
+margin_right = 618.589
+margin_bottom = 256.682
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.0392157, 0.952941, 0.203922, 1 )
+custom_colors/font_color_hover = Color( 0.388235, 0.0196078, 0.0196078, 1 )
+text = "Voltar"
 [connection signal="timeout" from="GeraBaloes/Timer" to="GeraBaloes/Gerador" method="_on_Timer_timeout"]
 [connection signal="pressed" from="GameOver/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Ganhou/ButtonRestart" to="." method="_on_ButtonRestart_pressed"]

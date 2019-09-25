@@ -31,8 +31,6 @@ func _process(delta):
 				#print(pedra.position)
 	if tiro:
 		disparar(300-pedra.position.x, pedra.position.y, delta)
-		#tiro = false
-		#print(pedra.position)
 	#
 func _input(event):
 	if event is InputEventMouseButton:
