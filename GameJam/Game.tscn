@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://asset/image/céu-mount.png" type="Texture" id=2]
@@ -16,9 +16,11 @@
 [ext_resource path="res://asset/image/fumaca.png" type="Texture" id=14]
 [ext_resource path="res://asset/fonts/red-delicious/reddeliciousboldital.otf" type="DynamicFontData" id=15]
 [ext_resource path="res://asset/fonts/red-delicious/reddelicious3d.otf" type="DynamicFontData" id=16]
-[ext_resource path="res://asset/image/borracha-corada.png" type="Texture" id=17]
-[ext_resource path="res://asset/image/boracha-atirada.png" type="Texture" id=18]
-[ext_resource path="res://asset/image/borracha-estica.png" type="Texture" id=19]
+[ext_resource path="res://Scripts/Borracha.gd" type="Script" id=17]
+[ext_resource path="res://asset/image/borrachas/borracha-corada.png" type="Texture" id=18]
+[ext_resource path="res://asset/image/borrachas/borracha-corada-f3.png" type="Texture" id=19]
+[ext_resource path="res://asset/image/borrachas/borracha-corada-f5.png" type="Texture" id=20]
+[ext_resource path="res://sound/estouro.wav" type="AudioStream" id=21]
 
 [sub_resource type="DynamicFont" id=1]
 size = 90
@@ -36,24 +38,6 @@ font_data = ExtResource( 15 )
 size = 40
 font_data = ExtResource( 16 )
 
-[sub_resource type="SpriteFrames" id=5]
-animations = [ {
-"frames": [ ExtResource( 17 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 18 ) ],
-"loop": true,
-"name": "disparou",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 19 ) ],
-"loop": true,
-"name": "esticada",
-"speed": 5.0
-} ]
-
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -64,14 +48,13 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="mountain" type="Sprite" parent="."]
-position = Vector2( -7.61385, 218.657 )
+position = Vector2( -7.01513, 218.657 )
 scale = Vector2( 1.7376, 1.42921 )
 z_index = 1
 texture = ExtResource( 3 )
 centered = false
 
 [node name="GeraBaloes" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Baloes" parent="GeraBaloes" instance=ExtResource( 4 )]
 position = Vector2( -317.853, -196.553 )
@@ -177,13 +160,36 @@ custom_colors/font_color = Color( 0.0392157, 0.952941, 0.203922, 1 )
 custom_colors/font_color_hover = Color( 0.388235, 0.0196078, 0.0196078, 1 )
 text = "Voltar"
 
-[node name="Borracha" type="AnimatedSprite" parent="."]
-position = Vector2( 174.204, 257.242 )
-rotation = 0.24674
-scale = Vector2( 0.455629, 0.449463 )
+[node name="Borracha" type="Node2D" parent="."]
+editor/display_folded = true
+script = ExtResource( 17 )
+
+[node name="centro1" type="Sprite" parent="Borracha"]
+position = Vector2( 203.619, 379.306 )
+scale = Vector2( 0.410586, 0.553959 )
 z_index = 2
-frames = SubResource( 5 )
+texture = ExtResource( 18 )
 centered = false
+
+[node name="centro2" type="Sprite" parent="Borracha"]
+visible = false
+position = Vector2( 181.651, 387.018 )
+scale = Vector2( 0.394494, 0.637284 )
+z_index = 2
+texture = ExtResource( 19 )
+centered = false
+
+[node name="centro3" type="Sprite" parent="Borracha"]
+visible = false
+position = Vector2( 117.864, 415.153 )
+rotation = -0.208349
+scale = Vector2( 0.485955, 0.570729 )
+z_index = 2
+texture = ExtResource( 20 )
+centered = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
 [connection signal="timeout" from="GeraBaloes/Timer" to="GeraBaloes/Gerador" method="_on_Timer_timeout"]
 [connection signal="pressed" from="GameOver/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Ganhou/ButtonRestart" to="." method="_on_ButtonRestart_pressed"]

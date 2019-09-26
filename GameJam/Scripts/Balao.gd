@@ -23,4 +23,5 @@ func delay():
 	time.set_wait_time(0.2)
 	time.start()
 	yield(time, "timeout")
+	get_node("../../AudioStreamPlayer").play()
 	queue_free()
