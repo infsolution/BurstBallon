@@ -1,11 +1,12 @@
 extends RigidBody2D
 onready var time = get_node("../Timer")
 onready var balao = get_node("../../Baloes")
+onready	var estouro = get_node("../../AudioStreamPlayer")
 var cena
 func _ready():
 	cena = get_tree().get_current_scene()
 	set_process(true)
-	
+
 func _process(delta):
 	if self.position.y <= 0:
 		cena.deading(get_owner())
@@ -23,5 +24,6 @@ func delay():
 	time.set_wait_time(0.2)
 	time.start()
 	yield(time, "timeout")
-	get_node("../../AudioStreamPlayer").play()
+	estouro.play()
 	queue_free()
+	

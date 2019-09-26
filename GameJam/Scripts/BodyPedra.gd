@@ -5,8 +5,10 @@ onready var pedra = get_node("../../Pedra")
 var dragMouse = false
 var tiro = false
 var ang = 0
+var cena
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	cena = get_tree().get_current_scene()
 	set_process(true)
 	pass
 
@@ -45,3 +47,5 @@ func disparar(forca, angulo, delta):
 	pedra.position += Vector2((forca + vel) * delta, -400 * delta)
 	if pedra.position.x > 1024 or pedra.position.y > 900 or pedra.position.y <= 0:
 		pedra.queue_free()
+		cena.set_veri_pedra(true)
+		

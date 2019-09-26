@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://asset/image/céu-mount.png" type="Texture" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://asset/image/borrachas/borracha-corada-f3.png" type="Texture" id=19]
 [ext_resource path="res://asset/image/borrachas/borracha-corada-f5.png" type="Texture" id=20]
 [ext_resource path="res://sound/estouro.wav" type="AudioStream" id=21]
+[ext_resource path="res://asset/fonts/red-delicious/reddelicious.otf" type="DynamicFontData" id=22]
 
 [sub_resource type="DynamicFont" id=1]
 size = 90
@@ -37,6 +38,9 @@ font_data = ExtResource( 15 )
 [sub_resource type="DynamicFont" id=4]
 size = 40
 font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 22 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -55,8 +59,10 @@ texture = ExtResource( 3 )
 centered = false
 
 [node name="GeraBaloes" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Baloes" parent="GeraBaloes" instance=ExtResource( 4 )]
+visible = false
 position = Vector2( -317.853, -196.553 )
 
 [node name="Gerador" type="Position2D" parent="GeraBaloes"]
@@ -190,6 +196,17 @@ centered = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 21 )
+
+[node name="ButtonPause" type="Button" parent="."]
+pause_mode = 2
+margin_left = 606.0
+margin_top = 37.0
+margin_right = 662.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 5 )
+text = "pause"
+align = 2
 [connection signal="timeout" from="GeraBaloes/Timer" to="GeraBaloes/Gerador" method="_on_Timer_timeout"]
 [connection signal="pressed" from="GameOver/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Ganhou/ButtonRestart" to="." method="_on_ButtonRestart_pressed"]
+[connection signal="pressed" from="ButtonPause" to="." method="_on_ButtonPause_pressed"]

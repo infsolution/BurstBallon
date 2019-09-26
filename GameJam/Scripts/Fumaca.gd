@@ -13,9 +13,9 @@ func _process(delta):
 	pass
 
 func sobe():
-	$Sprite.position += Vector2(0, -5)
+	$Sprite.position += Vector2(0, -20)
 func desce():
-	$Sprite.position += Vector2(0, +5)
+	$Sprite.position += Vector2(0, 25)
 	if $Sprite.position.y >= 199:
 		cena.ganhou = true
 	#print($Sprite.position)

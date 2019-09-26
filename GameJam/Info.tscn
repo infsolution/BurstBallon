@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/Info.gd" type="Script" id=1]
+[ext_resource path="res://asset/image/céu-png.png" type="Texture" id=2]
+[ext_resource path="res://asset/fonts/red-delicious/reddelicious.otf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 3 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.0196078, 0.333333, 0.054902, 1 )
+scale = Vector2( 1.35215, 1.27663 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Label" type="Label" parent="."]
+margin_left = 340.842
+margin_top = 24.0
+margin_right = 650.842
+margin_bottom = 55.0
+custom_fonts/font = SubResource( 1 )
+text = "INFORMAÇÕES"
+align = 1
+
+[node name="Button" type="Button" parent="."]
+margin_left = 457.596
+margin_top = 436.011
+margin_right = 572.596
+margin_bottom = 475.011
+custom_fonts/font = SubResource( 2 )
+text = "voltar"
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 47.0
+margin_top = 110.0
+margin_right = 1000.0
+margin_bottom = 407.0
+custom_fonts/font = SubResource( 3 )
+text = "O Burst Ballonn conta a história de um player que precisa evitar que o oxigênio do planeta se 
+acabe, predominando assim a existência de muitos gase tóxicos. Para isso ele precisa estorar
+balões que são gerados com oxigênio para espalhar o gás no planeta, mas junto com os balões
+de oxigênio, também são gerados balões com gases tóxicos, que não podem ser estourados, 
+pois vai piorar ainda mais a poluição do ar levando ao fim da vida no planeta. O player tem um 
+indicador, um balão no canto superior esquerdo da tela, que vai indicar qual a cor do balão que 
+possui oxigênio, para estourá-lo ele possui uma baladeira (estilingue) com pedras, onde ao clicar 
+com o botão esquedo do mouse sobre a pedra, posicionada na baladeira  e puxar para traz ele 
+estica a baladeira e ao soltar o botão ele atira a pedra contra o balão. Para ganhar uma nova 
+pedra deve-se apertar a tecla de espaço. A cada balão correto estourado o gás tóxico diminui
+e o player vence quando todo o gás tóximo sumir da tela e perde quando o gás tóxico encher a
+tela."
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

@@ -9,6 +9,8 @@ onready var fumaca = get_node("Fumaca")
 onready var lab_parabens = get_node("Ganhou/LabelParabens")
 onready var but_reset = get_node("Ganhou/ButtonRestart")
 onready var pedra = get_node("Capanga/Pedra")
+onready var play_game = get_node("res://asset/image/play_green.png")
+var veri_pedra = true
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -46,5 +48,21 @@ func pontuar(balao):
 func pontos():
 	return life
 
+func autori_pedra():
+	return veri_pedra
+func set_veri_pedra(autori):
+	veri_pedra = autori
+
 func _on_ButtonRestart_pressed():
 	get_tree().change_scene("res://Menu.tscn")
+
+
+func _on_ButtonPause_pressed():
+	if get_tree().paused:
+		get_tree().paused =false
+		$ButtonPause.text = "pause"
+		#$ButtonPause.icon = play_game
+		
+	else:
+		get_tree().paused=true
+		$ButtonPause.text = "play"
